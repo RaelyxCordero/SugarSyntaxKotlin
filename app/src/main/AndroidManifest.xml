@@ -18,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".reified.InlineWithReifiedExampleActivity"
+            android:label="@string/title_activity_inline_with_reified_example"
+            android:theme="@style/Theme.SugarSyntaxKotlin.NoActionBar" />
+
+        <activity
+            android:name=".sealed.SealedActivity"
+            android:label="@string/title_activity_inline_with_reified_example"
+            android:theme="@style/Theme.SugarSyntaxKotlin.NoActionBar" />
     </application>
 
 </manifest>
