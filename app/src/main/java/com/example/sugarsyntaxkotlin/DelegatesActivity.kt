@@ -21,7 +21,12 @@ class DelegatesActivity : AppCompatActivity(), ComponentInterface {
         label.text = value
     }
 
+    private var vetoableText: String by Delegates.vetoable("vetoable") { _, _, value ->
+        value.length >= 8
+    }
+
     lateinit var label: TextView
+    lateinit var vetoableLabel: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +37,18 @@ class DelegatesActivity : AppCompatActivity(), ComponentInterface {
                     setMargins(8,8,8,8)
                     text = searchText
                 }
+                vetoableLabel = label {
+                    setMargins(8,8,8,8)
+                    text = vetoableText
+                }
                 editText {
                     setMargins(8,8,8,8)
                     doAfterTextChanged {
-                        searchText = it.toString()
+                        it.toString().let { text ->
+                            searchText = text
+                            vetoableText = text
+                            vetoableLabel.text = vetoableText
+                        }
                     }
                 }
                 button {

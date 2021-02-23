@@ -23,14 +23,14 @@ infix fun AppCompatActivity.verticalLayout(block: VerticalLayout.() -> Unit): Ve
 
 infix fun ViewGroup.label(block: TextView.() -> Unit): TextView = TextView(context)
     .apply {
-        layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        configureLayoutParams(MATCH_PARENT, WRAP_CONTENT)
     }
     .apply(block)
     .also { addView(it) }
 
 infix fun ViewGroup.editText(block: AppCompatEditText.() -> Unit) = AppCompatEditText(context)
     .apply {
-        layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        configureLayoutParams(MATCH_PARENT, WRAP_CONTENT)
     }
     .apply(block)
     .also { addView(it) }
@@ -38,7 +38,7 @@ infix fun ViewGroup.editText(block: AppCompatEditText.() -> Unit) = AppCompatEdi
 infix fun ViewGroup.button(block: AppCompatButton.() -> Unit): AppCompatButton =
     AppCompatButton(context)
         .apply {
-            layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+            configureLayoutParams(MATCH_PARENT, WRAP_CONTENT)
         }
         .apply(block)
         .also { addView(it) }
@@ -56,3 +56,8 @@ fun View.setMargins(left: Int, top: Int, right: Int, bottom: Int) {
 }
 
 fun View.onClick(block: (View) -> Unit) = setOnClickListener(block)
+
+
+fun View.configureLayoutParams(width: Int, height: Int) {
+    layoutParams = LinearLayout.LayoutParams(width, height)
+}
