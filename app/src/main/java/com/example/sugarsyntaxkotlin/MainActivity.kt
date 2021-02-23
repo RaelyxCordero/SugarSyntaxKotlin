@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 setMargins(24,24,24, 0)
                 text = "Delegates"
                 onClick {
-
+                    DelegatesActivity.launch(this@MainActivity)
                 }
             }
         })
