@@ -1,23 +1,27 @@
-package com.example.sugarsyntaxkotlin
+package com.example.sugarsyntaxkotlin.delegates
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
+import com.example.sugarsyntaxkotlin.dsl.*
 import java.lang.ref.WeakReference
 import kotlin.properties.Delegates
 
-class DelegatesActivity : AppCompatActivity(), ComponentInterface {
+class DelegatesActivity : AppCompatActivity(),
+    ComponentInterface {
 
-    private val navigable: Navigable = NavigableImpl(this)
+    private val navigable: Navigable =
+        NavigableImpl(this)
 
-    override val onNavigationClick: ((String) -> Unit)? by ref(navigable::onNavigationClick)
+    override val onNavigationClick: ((String) -> Unit)? by ref(
+        navigable::onNavigationClick
+    )
 
-    override var searchText: String by Delegates.observable("initial search") {_ ,_ , value ->
+    override var searchText: String by Delegates.observable("initial search") { _ ,_ , value ->
         label.text = value
     }
 
@@ -33,14 +37,17 @@ class DelegatesActivity : AppCompatActivity(), ComponentInterface {
         setContentView(
             verticalLayout {
                 setMargins(24,24,24,24)
+
                 label = label {
                     setMargins(8,8,8,8)
                     text = searchText
                 }
+
                 vetoableLabel = label {
                     setMargins(8,8,8,8)
                     text = vetoableText
                 }
+
                 editText {
                     setMargins(8,8,8,8)
                     doAfterTextChanged {
@@ -51,6 +58,7 @@ class DelegatesActivity : AppCompatActivity(), ComponentInterface {
                         }
                     }
                 }
+
                 button {
                     setMargins(8,8,8,8)
                     text = "Navegar!"
@@ -71,12 +79,11 @@ class DelegatesActivity : AppCompatActivity(), ComponentInterface {
     }
 }
 
-class NavigableImpl(context: Context): Navigable {
+class NavigableImpl(context: Context):
+    Navigable {
     private val weakContext: WeakReference<Context> = WeakReference(context)
-    override val onNavigationClick: ((String) -> Unit)?  by lazy {
-         val onClick: (String) -> Unit = {
-             Toast.makeText(weakContext.get(), "Click on Navigable Impl with value : $it", Toast.LENGTH_SHORT).show()
-         }
-        onClick
-    }
+    override val onNavigationClick: ((String) -> Unit)?
+        get() = {
+            Toast.makeText(weakContext.get(), "Click on Navigable Impl with value : $it", Toast.LENGTH_SHORT).show()
+        }
 }

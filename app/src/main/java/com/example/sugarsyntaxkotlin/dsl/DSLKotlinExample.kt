@@ -1,4 +1,4 @@
-package com.example.sugarsyntaxkotlin
+package com.example.sugarsyntaxkotlin.dsl
 
 import android.content.Context
 import android.view.View
@@ -55,7 +55,7 @@ fun View.setMargins(left: Int, top: Int, right: Int, bottom: Int) {
     layoutParams = newLayoutParams
 }
 
-fun View.onClick(block: (View) -> Unit) = setOnClickListener(block)
+infix fun View.onClick(block: (View) -> Unit) = setOnClickListener(block)
 
 
 fun View.configureLayoutParams(width: Int, height: Int) {

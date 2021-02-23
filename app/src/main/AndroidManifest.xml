@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SugarSyntaxKotlin">
-        <activity android:name=".DelegatesActivity"></activity>
-        <activity android:name=".DslActivity" />
+        <activity android:name=".delegates.DelegatesActivity"/>
+        <activity android:name=".dsl.DslActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

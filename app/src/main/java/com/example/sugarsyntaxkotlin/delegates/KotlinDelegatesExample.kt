@@ -1,4 +1,4 @@
-package com.example.sugarsyntaxkotlin
+package com.example.sugarsyntaxkotlin.delegates
 
 import kotlin.reflect.KMutableProperty0
 import kotlin.reflect.KProperty
@@ -15,10 +15,14 @@ class ReferencedProperty<T>(private val get: () -> T,
                           value: T) = set(value)
 }
 
-fun <T> ref(property: KMutableProperty0<T>) = ReferencedProperty(property::get,
-    property::set)
+fun <T> ref(property: KMutableProperty0<T>) =
+    ReferencedProperty(
+        property::get,
+        property::set
+    )
 
-fun <T> ref(property: KProperty0<T>) = ReferencedProperty(property::get)
+fun <T> ref(property: KProperty0<T>) =
+    ReferencedProperty(property::get)
 
 interface ComponentInterface {
 

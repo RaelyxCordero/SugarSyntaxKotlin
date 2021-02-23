@@ -1,4 +1,4 @@
-package com.example.sugarsyntaxkotlin
+package com.example.sugarsyntaxkotlin.dsl
 
 import android.content.Context
 import android.content.Intent
@@ -17,6 +17,7 @@ class DslActivity : AppCompatActivity() {
                     text = "Hola Mundo"
                     setPadding(8,0,8,0)
                 }
+
                 button {
                     text = "Clickeame!"
                     setPadding(0,16,0,0)
