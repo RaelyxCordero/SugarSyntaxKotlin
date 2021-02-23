@@ -40,6 +40,10 @@ infix fun ViewGroup.button(block: DSLButton.() -> Unit): DSLButton = DSLButton(c
 }
 
 class DSLButton(context: Context): AppCompatButton(context) {
+    init {
+        layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+    }
+
     infix fun onClick(block: (View) -> Unit) {
         setOnClickListener(block)
     }
