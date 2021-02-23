@@ -1,7 +1,10 @@
 package com.example.sugarsyntaxkotlin.reified
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.sugarsyntaxkotlin.DslActivity
 import com.example.sugarsyntaxkotlin.R
 import kotlinx.android.synthetic.main.activity_inline_with_reified_example.*
 
@@ -47,5 +50,13 @@ class InlineWithReifiedExampleActivity : AppCompatActivity() {
         val techSpecsViewModel3 = getViewModel(string, TechSpecsViewModel::class.java)
 
         techSpecsViewModel.usingStringInTechSpecsViewModel(this)
+    }
+
+    companion object {
+
+        fun launch(context: Context) {
+            val intent = Intent(context, InlineWithReifiedExampleActivity::class.java)
+            context.startActivity(intent)
+        }
     }
 }

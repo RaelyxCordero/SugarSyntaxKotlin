@@ -3,6 +3,7 @@ package com.example.sugarsyntaxkotlin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.sugarsyntaxkotlin.reified.InlineWithReifiedExampleActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
                 setMargins(24,24,24, 0)
                 text = "Inline and Reified"
                 onClick {
-
+                    InlineWithReifiedExampleActivity.launch(this@MainActivity)
                 }
             }
 
