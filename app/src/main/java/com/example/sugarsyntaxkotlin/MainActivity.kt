@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.sugarsyntaxkotlin.reified.InlineWithReifiedExampleActivity
+import com.example.sugarsyntaxkotlin.sealed.SealedActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
                 setMargins(24,24,24, 0)
                 text = "Sealed Classes"
                 onClick {
-
+                    SealedActivity.launch(this@MainActivity)
                 }
             }
 
