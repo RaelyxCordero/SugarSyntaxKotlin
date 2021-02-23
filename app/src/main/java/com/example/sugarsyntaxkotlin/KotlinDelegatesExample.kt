@@ -1,7 +1,6 @@
 package com.example.sugarsyntaxkotlin
 
 import kotlin.reflect.KMutableProperty0
-import kotlin.reflect.KMutableProperty1
 import kotlin.reflect.KProperty
 import kotlin.reflect.KProperty0
 
